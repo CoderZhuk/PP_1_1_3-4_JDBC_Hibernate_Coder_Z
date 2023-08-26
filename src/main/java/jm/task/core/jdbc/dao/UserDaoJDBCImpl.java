@@ -45,6 +45,7 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setString(2, lastName);
             preparedStatement.setByte(3, age);
             preparedStatement.execute();
+            System.out.println("User с именем - " + name + " добавлен в базу данных");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -52,7 +53,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void removeUserById(long id) {
         try (Connection connection = getConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE user WHERE id = (?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM user WHERE id = (?)");
             preparedStatement.setLong(1, id);
             System.out.println("user deleted" + id);
         } catch (SQLException e) {
