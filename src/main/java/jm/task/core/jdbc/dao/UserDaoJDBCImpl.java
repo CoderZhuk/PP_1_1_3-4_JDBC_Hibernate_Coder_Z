@@ -1,7 +1,7 @@
 package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
-import jm.task.core.jdbc.util.Util;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -45,7 +45,6 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setString(2, lastName);
             preparedStatement.setByte(3, age);
             preparedStatement.execute();
-            System.out.println("User с именем - " + name + " добавлен в базу данных");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -53,10 +52,10 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void removeUserById(long id) {
         try (Connection connection = getConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM user WHERE id = (?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE user WHERE id = (?)");
             preparedStatement.setLong(1, id);
-            preparedStatement.executeUpdate();
             System.out.println("user deleted" + id);
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

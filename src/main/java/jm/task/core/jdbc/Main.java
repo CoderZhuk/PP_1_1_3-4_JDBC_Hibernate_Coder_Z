@@ -1,12 +1,6 @@
 package jm.task.core.jdbc;
-
-//import static jm.task.core.jdbc.util.Util.createSchema;
-import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
-import jm.task.core.jdbc.util.Util;
-
-import static jm.task.core.jdbc.util.Util.getConnection;
 
 public class Main {
     public static void main(String[] args) {
